@@ -6,6 +6,8 @@ var guessWord = "";
 var guesses = [];
 var userLives = 10;
 var answerArray=[];
+var remainingLetters= '';
+
     
 
 // selecting a random word from words array
@@ -34,31 +36,43 @@ function drawWord(){
 
 //Check if user guess is present, add to answer array, or else subtract a life
 
-function wrongGuess(){
+function wrongGuess(guess){
+    if (!guesses.includes(guess)){
     userLives--;
-    document.getElementById("livesLeft").innerHTML = ("You have "+ userLives + " lives left.")
+    document.getElementById("livesLeft").innerHTML = ("You have "+ userLives + " lives left.");
     guesses.push(guess);
-    document.getElementById("guessedLetters").innerHTML = (guesses);
+    document.getElementById("lettersGuessed").innerHTML = guesses;
+    } else {
+        alert ("Please pick a valid letter.");
+    }
 }
 
-function userGuess (){
-    document.onkeyup = function(event){
-    var guess = String.fromCharCode(event.which).toLowerCase();
+//Key up event
+document.onkeyup = function(event){
+    var guess = event.key;
+    userGuess(guess)
+}
+
+//User guess function
+function userGuess (guess){
+    //loop determining if guess is present in the word
+    if(guessWord.indexOf(guess) > -1)   { 
+        //checks where guess is present and replaces it
         for (var j = 0; j < guessWord.length; j++) {
     
         if (guessWord[j] === guess) {
         answerArray[j] = guess;
         drawWord();
         } 
-        else {
-            userLives--;
-            document.getElementById("livesLeft").innerHTML = ("You have "+ userLives + " lives left.")
-            guesses.push(guess);
-            document.getElementById("lettersGuessed").innerHTML = guesses;
+        } 
+        } else {
+            wrongGuess(guess);
+       
         }
+        
         }
-    }
-}
+    
+
 
 window.onload = function(){
 
@@ -71,7 +85,6 @@ console.log (answerArray);
 drawWord();
 
 
-userGuess();
 
 console.log(userLives);
 

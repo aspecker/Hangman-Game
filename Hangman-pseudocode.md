@@ -1,3 +1,9 @@
+# TO DOS for Hangman Project
+* will continue to register already guessed letters
+* 
+
+
+
 # Hangman Pseudocode
 
 ### Variables needed
