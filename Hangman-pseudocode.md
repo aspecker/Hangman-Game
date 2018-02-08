@@ -1,8 +1,12 @@
 # TO DOS for Hangman Project
+* STYLING
+
+# DONES
 * needs to not register registers input of non letter characters 
 * reset function needed to trigger on win and loss
+* reset function needs to actually do something
 * After resetting to a new guessWord, retains characters longer than new word length
-* 
+
 
 
 

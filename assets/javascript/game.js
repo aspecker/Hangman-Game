@@ -1,7 +1,7 @@
 // Javascript for Hangman Game Adam Specker
 
 // Calling variables
-var words = ["plholdzero","plholdtwo","plholdthree",];
+var words = ["pekingese","canine","spaniel","labrador","poodle","veteranarian","terrier","pomeranian","rottweiler","doberman","retriever","bulldog","mastiff", "dachshund", "dalmation", "collie", "greyhound", "whippet"];
 var guessWord = "";
 var guesses = [];
 var userLives = 9;
@@ -35,6 +35,7 @@ function newAnswer (){
 
 //Resets all the values
 function reset (){
+        
         guessWord = '';
         userLives = 9;
         guesses=[];
@@ -43,13 +44,15 @@ function reset (){
         document.getElementById("lettersGuessed").innerHTML = guesses;
         document.getElementById("livesLeft").innerHTML = ("You have "+ userLives + " lives left.");
         drawWord();
+        
 }
 
 // Triggers on game victory
 function gameWin(){
     // document.getElementById("winLoss").innerHTML= ("YOU WIN!");
+    alert ("Arf arf! Thanks for guessing " + guessWord);
     reset();
-    alert ("YOU WIN!");
+    
     // drawWord();
 }
 
@@ -57,20 +60,21 @@ function gameWin(){
 function gameLoss(){
     // document.getElementById("winLoss").innerHTML; ("YOU LOSE! MAYBE NEXT TIME.");
     reset();
-    alert ("YOU LOSE MAYBE NEXT TIME!");
+    alert ("GRRR! You couldn't guess " + guessWord);
     // drawWord();
 }
 
-//Check if user guess is present, add to answer array, or else subtract a life
+//Check if user guess is present or else subtract a life
 function wrongGuess(guess){
     if (!guesses.includes(guess)){
     userLives--;
     if (userLives===0){
         gameLoss();
     } else{
+    // add to guessed letter array,
     document.getElementById("livesLeft").innerHTML = ("You have "+ userLives + " lives left.");
     guesses.push(guess);
-    document.getElementById("lettersGuessed").innerHTML = guesses;
+    document.getElementById("lettersGuessed").innerHTML = guesses.join("     ");
     }    
     } 
     else {
@@ -84,16 +88,16 @@ function userGuess (guess){
     if(answerArray.includes(guess)){
         alert("You have already found this letter.")
     } else {
-        //loop determining if guess is present in the word
+        //conditional determining if guess is present in the word
     if(guessWord.indexOf(guess) > -1)   { 
-        //checks where guess is present and replaces it, draws new word, and adds to remaining letters
+        //if present checks where guess is present and replaces it, draws new word, and adds to win counter
         for (var j = 0; j < guessWord.length; j++) {
         
             if (guessWord[j] === guess) {
             answerArray[j] = guess;
             drawWord();
             remainingLetters ++;
-            console.log(remainingLetters);
+            // console.log(remainingLetters);
             if (remainingLetters==guessWord.length){
                 gameWin();
         }
@@ -115,8 +119,6 @@ document.onkeyup = function(event){
 window.onload = function(){
 reset();
 drawWord();
-
-console.log(userLives);
 
 }
 
