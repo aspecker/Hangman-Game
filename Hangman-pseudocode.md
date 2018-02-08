@@ -1,6 +1,9 @@
 # TO DOS for Hangman Project
-* will continue to register already guessed letters
-* 
+* registers input of non letter characters
+* significant additional styling needed
+* win and loss functions needed to be optimized
+* reset function needed to trigger on win and loss
+* JAVASCRIPT TO WEAVE IT ALL TOGETHER
 
 
 

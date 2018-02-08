@@ -6,6 +6,7 @@ var guessWord = "";
 var guesses = [];
 var userLives = 10;
 var answerArray=[];
+var rawArray=[];
 var remainingLetters= '';
 
     
@@ -30,8 +31,8 @@ function drawWord(){
     while (guessWord == ''){
         newWord ();
     }
-   
-    document.getElementById("currentWord").innerHTML = answerArray.toString();
+    var formArray = answerArray.join(" ");
+    document.getElementById("currentWord").innerHTML = formArray.toString();
 }
 
 //Check if user guess is present, add to answer array, or else subtract a life
@@ -39,12 +40,39 @@ function drawWord(){
 function wrongGuess(guess){
     if (!guesses.includes(guess)){
     userLives--;
+    if (userLives===0){
+        gameLoss();
+    } else{
     document.getElementById("livesLeft").innerHTML = ("You have "+ userLives + " lives left.");
     guesses.push(guess);
     document.getElementById("lettersGuessed").innerHTML = guesses;
-    } else {
-        alert ("Please pick a valid letter.");
+    }    
+    } 
+    else {
+        alert ("Please pick a letter you have not guessed.");
     }
+}
+
+//Resets all the values
+function reset (){
+        newWord ();
+        newAnswer();
+        userLives = 10;
+        guesses=[];
+}
+
+// Triggers on game victory
+function gameWin(){
+    // document.getElementById("winLoss").innerHTML= ("YOU WIN!");
+    alert ("YOU WIN!");
+    reset();
+}
+
+// Triggers on game defeat
+function gameLoss(){
+    document.getElementById("winLoss").innerHTML; ("YOU LOSE! MAYBE NEXT TIME.");
+    // alert ("YOU LOSE MAYBE NEXT TIME!");
+    reset();
 }
 
 //Key up event
@@ -67,7 +95,6 @@ function userGuess (guess){
         } 
         } else {
             wrongGuess(guess);
-       
         }
         
         }
@@ -82,7 +109,7 @@ console.log(guessWord);
 newAnswer ();
 console.log (answerArray);
 
-drawWord();
+
 
 
 

@@ -4,27 +4,39 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>[Insert Theme] Hangman Game</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./assets/javascript/game.js"></script>
 </head>
 <body>
-    <div class="header">
-        <h1>Hangman Game</h1>
+<div class = "wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="header">
+                <h1>Hangman Game</h1>
+                </div>
+
+                <p id="winText"></p>
+                
+                <h2>You have this many lives remaining</h2>
+                <p id="livesLeft"></p>
+
+                <p id="winLoss"></p>
+                
+            </div>
+            <div class="col-md-6">
+                <h2>Guess this word!</h2>
+                <p id="currentWord"></p>
+           
+
+                <h2>You've guessed these letters</h2>
+                <p id="lettersGuessed"></p>
+            </div>
+        </div>
     </div>
-
-    <p id="winText"></p>
-    
-    <h2>Guess this word!</h2>
-    <p id="currentWord"></p>
-
-    <h2>You have this many lives remaining</h2>
-    <p id="livesLeft"></p>
-
-    <h2>You've guessed these letters</h2>
-    <p id="lettersGuessed"></p>
-
-    
+</div> 
     
 </body>
 </html>
