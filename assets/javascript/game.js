@@ -1,7 +1,8 @@
 // Javascript for Hangman Game Adam Specker
 
 // Calling variables
-var words = ["pekingese","canine","spaniel","labrador","poodle","veteranarian","terrier","pomeranian","rottweiler","doberman","retriever","bulldog","mastiff", "dachshund", "dalmation", "collie", "greyhound", "whippet"];
+var words = ["pekingese","spaniel","labrador","poodle","terrier","pomeranian","rottweiler","doberman","retriever","bulldog","mastiff", "dachshund", "dalmation", "collie", "greyhound", "whippet"];
+// var words = ["placeholdone", "placeholdtwo","placeholdthree"]
 var guessWord = "";
 var guesses = [];
 var userLives = 9;
@@ -9,6 +10,8 @@ var answerArray=[];
 var rawArray=[];
 var remainingLetters= '';
 var formArray =[];
+var wins=0;
+var losses=0;
 
 // If guessword is empty creates a new word, if not outputs the current answerArray
 function drawWord(){
@@ -43,6 +46,7 @@ function reset (){
         answerArray = [];
         document.getElementById("lettersGuessed").innerHTML = guesses;
         document.getElementById("livesLeft").innerHTML = ("You have "+ userLives + " lives left.");
+        document.getElementById("winLoss").innerHTML = ("Wins: " + wins + " Losses: " + losses);
         drawWord();
         
 }
@@ -50,6 +54,8 @@ function reset (){
 // Triggers on game victory
 function gameWin(){
     // document.getElementById("winLoss").innerHTML= ("YOU WIN!");
+    wins++;
+    console.log(wins);
     alert ("Arf arf! Thanks for guessing " + guessWord);
     reset();
     
@@ -59,8 +65,10 @@ function gameWin(){
 // Triggers on game defeat
 function gameLoss(){
     // document.getElementById("winLoss").innerHTML; ("YOU LOSE! MAYBE NEXT TIME.");
-    reset();
+    losses++;
+    console.log(losses);
     alert ("GRRR! You couldn't guess " + guessWord);
+    reset();
     // drawWord();
 }
 

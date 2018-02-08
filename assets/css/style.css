@@ -2,10 +2,16 @@
     padding: 30px 60px 10px 60px;
 }
 body{
-    background-color: darkslateblue;
+    background-image: url(../images/vertical_cloth.png);
     color: lightgray;
     font-family: 'Playfair Display', serif;
 }
 .jumbotron{
     text-align: center;
+    background-image: url(../images/halftone-yellow.png);
+    color: darkslategray;
+
+}
+.col-md-6{
+
 }
