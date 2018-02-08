@@ -104,6 +104,7 @@ function userGuess (guess){
 window.onload = function(){
 
 newWord();
+drawWord();
 console.log(guessWord);
 
 // newAnswer ();
