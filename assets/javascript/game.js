@@ -4,7 +4,7 @@
 var words = ["plholdzero","plholdtwo","plholdthree",];
 var guessWord = "";
 var guesses = [];
-var userLives = 10;
+var userLives = 9;
 var answerArray=[];
 var rawArray=[];
 var remainingLetters= '';
@@ -55,7 +55,7 @@ function wrongGuess(guess){
 
 //Resets all the values
 function reset (){
-        newWord ();
+        guessWord = '';
         userLives = 10;
         guesses=[];
 }
@@ -64,13 +64,16 @@ function reset (){
 function gameWin(){
     // document.getElementById("winLoss").innerHTML= ("YOU WIN!");
     alert ("YOU WIN!");
-    reset();
+    drawWord();
+    // reset();
 }
 
 // Triggers on game defeat
 function gameLoss(){
     // document.getElementById("winLoss").innerHTML; ("YOU LOSE! MAYBE NEXT TIME.");
+    // reset();
     alert ("YOU LOSE MAYBE NEXT TIME!");
+    drawWord();
 }
 
 //Key up event
@@ -82,15 +85,21 @@ document.onkeyup = function(event){
 //User guess function
 function userGuess (guess){
     //loop determining if guess is present in the word
+    if(answerArray.includes(guess)){
+        alert("You have already found this letter.")
+    } else {
     if(guessWord.indexOf(guess) > -1)   { 
         //checks where guess is present and replaces it
         for (var j = 0; j < guessWord.length; j++) {
-    
-        if (guessWord[j] === guess) {
-        answerArray[j] = guess;
-        drawWord();
-        remainingLetters ++;
-        console.log(remainingLetters);
+        
+            if (guessWord[j] === guess) {
+            answerArray[j] = guess;
+            drawWord();
+            remainingLetters ++;
+            console.log(remainingLetters);
+            if (remainingLetters==guessWord.length){
+                gameWin();
+        }
         } 
         } 
         } else {
@@ -98,21 +107,12 @@ function userGuess (guess){
         }
         
         }
-    
+    }
 
 
 window.onload = function(){
 
-newWord();
 drawWord();
-console.log(guessWord);
-
-// newAnswer ();
-console.log (answerArray);
-
-
-
-
 
 console.log(userLives);
 

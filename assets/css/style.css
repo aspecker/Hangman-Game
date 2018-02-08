@@ -4,4 +4,8 @@
 body{
     background-color: darkslateblue;
     color: lightgray;
+    font-family: 'Playfair Display', serif;
+}
+.jumbotron{
+    text-align: center;
 }
