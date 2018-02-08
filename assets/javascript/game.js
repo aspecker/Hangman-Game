@@ -15,7 +15,7 @@ var remainingLetters= '';
 function newWord(){
 
 guessWord =words[Math.floor(Math.random() * words.length)];
-
+newAnswer (guessWord);
 }
 //Fills answerArray with underscores based on word length
 function newAnswer (){
@@ -23,7 +23,7 @@ function newAnswer (){
 for (var i = 0; i <guessWord.length;i++){
     answerArray[i]= " _ ";
 }
-    var remainingLetters = guessWord.length;
+    var remainingLetters = answerArray.length;
 }
 
 // If guessword is empty creates a new word, if not outputs the current answerArray
@@ -56,7 +56,6 @@ function wrongGuess(guess){
 //Resets all the values
 function reset (){
         newWord ();
-        newAnswer();
         userLives = 10;
         guesses=[];
 }
@@ -70,15 +69,14 @@ function gameWin(){
 
 // Triggers on game defeat
 function gameLoss(){
-    document.getElementById("winLoss").innerHTML; ("YOU LOSE! MAYBE NEXT TIME.");
-    // alert ("YOU LOSE MAYBE NEXT TIME!");
-    reset();
+    // document.getElementById("winLoss").innerHTML; ("YOU LOSE! MAYBE NEXT TIME.");
+    alert ("YOU LOSE MAYBE NEXT TIME!");
 }
 
 //Key up event
 document.onkeyup = function(event){
     var guess = event.key;
-    userGuess(guess)
+    userGuess(guess);
 }
 
 //User guess function
@@ -91,6 +89,8 @@ function userGuess (guess){
         if (guessWord[j] === guess) {
         answerArray[j] = guess;
         drawWord();
+        remainingLetters ++;
+        console.log(remainingLetters);
         } 
         } 
         } else {
@@ -106,7 +106,7 @@ window.onload = function(){
 newWord();
 console.log(guessWord);
 
-newAnswer ();
+// newAnswer ();
 console.log (answerArray);
 
 
