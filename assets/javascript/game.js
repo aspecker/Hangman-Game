@@ -53,23 +53,20 @@ function reset (){
 
 // Triggers on game victory
 function gameWin(){
-    // document.getElementById("winLoss").innerHTML= ("YOU WIN!");
     wins++;
-    console.log(wins);
-    alert ("Arf arf! Thanks for guessing " + guessWord);
+    alert ("Arf arf! Congratulations on guessing " + guessWord);
     reset();
+    document.getElementById("winPic").src= "./assets/images/smile-dog.jpg";
     
-    // drawWord();
 }
 
 // Triggers on game defeat
 function gameLoss(){
-    // document.getElementById("winLoss").innerHTML; ("YOU LOSE! MAYBE NEXT TIME.");
     losses++;
-    console.log(losses);
     alert ("GRRR! You couldn't guess " + guessWord);
     reset();
-    // drawWord();
+    document.getElementById("winPic").src = "./assets/images/grumpy-dog.jpg";
+    
 }
 
 //Check if user guess is present or else subtract a life
@@ -99,21 +96,20 @@ function userGuess (guess){
         //conditional determining if guess is present in the word
     if(guessWord.indexOf(guess) > -1)   { 
         //if present checks where guess is present and replaces it, draws new word, and adds to win counter
-        for (var j = 0; j < guessWord.length; j++) {
+    for (var j = 0; j < guessWord.length; j++) {
         
-            if (guessWord[j] === guess) {
+        if (guessWord[j] === guess) {
             answerArray[j] = guess;
             drawWord();
             remainingLetters ++;
-            // console.log(remainingLetters);
             if (remainingLetters==guessWord.length){
                 gameWin();
-        }
+                }
         } 
         } 
-        } else {
-            wrongGuess(guess);
-        }
+            } else {
+                wrongGuess(guess);
+                }
         
         }
     }
