@@ -54,7 +54,7 @@ function reset (){
 // Triggers on game victory
 function gameWin(){
     wins++;
-    alert ("Arf arf! Congratulations on guessing " + guessWord);
+    Materialize.toast("Arf arf! Congratulations on guessing " + guessWord, 4000);
     reset();
     document.getElementById("winPic").src= "./assets/images/smile-dog.jpg";
     
@@ -63,7 +63,7 @@ function gameWin(){
 // Triggers on game defeat
 function gameLoss(){
     losses++;
-    alert ("GRRR! You couldn't guess " + guessWord);
+    Materialize.toast("GRRR! You couldn't guess " + guessWord, 4000);
     reset();
     document.getElementById("winPic").src = "./assets/images/grumpy-dog.jpg";
     
@@ -83,7 +83,7 @@ function wrongGuess(guess){
     }    
     } 
     else {
-        alert ("Please pick a letter you have not guessed.");
+        Materialize.toast("Please pick a letter you have not guessed.", 2500);
     }
 }
 
@@ -91,7 +91,8 @@ function wrongGuess(guess){
 function userGuess (guess){
     //Check to see if user has already guessed that letter
     if(answerArray.includes(guess)){
-        alert("You have already found this letter.")
+        Materialize.toast("You have already found this letter.", 2500);
+
     } else {
         //conditional determining if guess is present in the word
     if(guessWord.indexOf(guess) > -1)   { 
